@@ -10,7 +10,18 @@ function Navbar(props: ClassName) {
     <NavbarBootstrap className={props.className} bg="dark" expand="lg">
       <Container className="container-navbar">
         <NavbarBootstrap.Brand href="#home">
-          Fundación Artistica Ingenio Musical
+          <svg
+            className="logo-icon"
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            stroke-linejoin="round"
+            stroke-miterlimit="2"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="11.998" cy="11.998" fill-rule="nonzero" r="9.998" />
+          </svg>
+          FUNDACIÓN ARTÍSTICA INGENIO MUSICAL
         </NavbarBootstrap.Brand>
         <NavbarBootstrap.Toggle aria-controls="basic-navbar-nav" />
         <NavbarBootstrap.Collapse
@@ -18,24 +29,36 @@ function Navbar(props: ClassName) {
           className="justify-content-end"
         >
           <Nav>
+            <svg
+              className="home-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path d="M20 7.093l-3-3v-2.093h3v5.093zm4 5.907h-3v10h-18v-10h-3l12-12 12 12zm-10 2h-4v6h4v-6z" />
+            </svg>
             <Button variant="outline-light">
-              <NavDropdown title="Nosotros" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Nosotros</NavDropdown.Item>
+              <NavDropdown
+                title="NOSOTROS"
+                id="basic-nav-dropdown"
+                menuVariant="dark"
+              >
+                <NavDropdown.Item href="#action/3.1">Historia</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
-                  Another action
+                  Misión/Vision
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">
-                  Something
+                  Fotogragía y Video
                 </NavDropdown.Item>
-                <NavDropdown.Divider />
                 <NavDropdown.Item href="#action/3.4">
-                  Separated link
+                  Proyectos
                 </NavDropdown.Item>
               </NavDropdown>
             </Button>
 
-            <Button variant="outline-light">Servicios</Button>
-            <Button variant="outline-light">Contacto</Button>
+            <Button variant="outline-light">SERVICIOS</Button>
+            <Button variant="outline-light">CONTACTO</Button>
           </Nav>
         </NavbarBootstrap.Collapse>
       </Container>
