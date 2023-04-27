@@ -12,8 +12,8 @@ function Navbar(props: ClassName) {
         <NavbarBootstrap.Brand href="#home">
           <svg
             className="logo-icon"
-            clip-rule="evenodd"
-            fill-rule="evenodd"
+            clipRule="evenodd"
+            fillRule="evenodd"
             stroke-linejoin="round"
             stroke-miterlimit="2"
             viewBox="0 0 24 24"
