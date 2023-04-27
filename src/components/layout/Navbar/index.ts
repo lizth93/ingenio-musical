@@ -1,14 +1,16 @@
 import styled from "styled-components";
 import Navbar from "./component";
-import { redColor } from "constants/styles";
+import { black, redColor } from "constants/styles";
 
 export default styled(Navbar)`
+  background-color: ${black} !important;
   .container-navbar {
     align-items: center;
   }
   .navbar-brand {
     color: #fff;
     display: flex;
+    font-weight: 700;
   }
   .logo-icon {
     width: 30px;
@@ -38,6 +40,9 @@ export default styled(Navbar)`
   .navbar-nav {
     gap: 1rem;
   }
+  .btn-navbar {
+    font-weight: 600;
+  }
 
   .btn {
     &:active {
@@ -53,6 +58,6 @@ export default styled(Navbar)`
 
   .dropdown-menu-dark {
     --bs-dropdown-color: #dee2e6;
-    --bs-dropdown-bg: rgb(8, 8, 18);
+    --bs-dropdown-bg: ${black};
   }
 `;

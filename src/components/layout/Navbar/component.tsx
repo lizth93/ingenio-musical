@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 
 function Navbar(props: ClassName) {
   return (
-    <NavbarBootstrap className={props.className} bg="dark" expand="lg">
+    <NavbarBootstrap className={props.className} expand="lg">
       <Container className="container-navbar">
         <NavbarBootstrap.Brand href="#home">
           <svg
@@ -38,7 +38,7 @@ function Navbar(props: ClassName) {
             >
               <path d="M20 7.093l-3-3v-2.093h3v5.093zm4 5.907h-3v10h-18v-10h-3l12-12 12 12zm-10 2h-4v6h4v-6z" />
             </svg>
-            <Button variant="outline-light">
+            <Button className="btn-navbar" variant="outline-light">
               <NavDropdown
                 title="NOSOTROS"
                 id="basic-nav-dropdown"
@@ -57,8 +57,12 @@ function Navbar(props: ClassName) {
               </NavDropdown>
             </Button>
 
-            <Button variant="outline-light">SERVICIOS</Button>
-            <Button variant="outline-light">CONTACTO</Button>
+            <Button className="btn-navbar" variant="outline-light">
+              SERVICIOS
+            </Button>
+            <Button className="btn-navbar" variant="outline-light">
+              CONTACTO
+            </Button>
           </Nav>
         </NavbarBootstrap.Collapse>
       </Container>

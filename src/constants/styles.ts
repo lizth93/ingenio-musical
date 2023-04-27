@@ -1,1 +1,2 @@
-export const redColor = "rgb(208, 14, 14)";
+export const redColor = "#FF0000";
+export const black = "#000000";
