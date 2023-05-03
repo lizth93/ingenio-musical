@@ -4,24 +4,54 @@ import Nav from "react-bootstrap/Nav";
 import NavbarBootstrap from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Button from "react-bootstrap/Button";
+import { useEffect, useState } from "react";
+import getBasicInformation from "api/getBasicInformation";
 
 function Navbar(props: ClassName) {
+  const [basicInfo, setBasicInfo] = useState<any>([]);
+  const [dropdown, setDropdown] = useState<string>("NOSOTROS");
+
+  useEffect(() => {
+    async function loadInfo() {
+      const basicInfo = await getBasicInformation();
+      setBasicInfo(basicInfo);
+    }
+    loadInfo();
+  }, []);
+
+  useEffect(() => {
+    if (basicInfo && basicInfo.navbarOptions) {
+      const dropdownOpt = basicInfo.navbarOptions[0]
+        ? basicInfo?.navbarOptions[0]
+        : "NOSOTROS";
+
+      setDropdown(dropdownOpt);
+      console.log(dropdownOpt);
+    }
+  }, [basicInfo]);
+  console.log(basicInfo, "basic info");
+
+  const defaultNavbarOpt = ["NOSOTROS", "SERVICIOS", "CONTACTO"];
+  const defaultDropdown = ["Misión/Vision", "Fotografía y Video", "Proyectos"];
+
   return (
     <NavbarBootstrap className={props.className} expand="lg">
       <Container className="container-navbar">
         <NavbarBootstrap.Brand href="#home">
           <svg
             className="logo-icon"
-            clip-rule="evenodd"
-            fill-rule="evenodd"
-            stroke-linejoin="round"
-            stroke-miterlimit="2"
+            clipRule="evenodd"
+            fillRule="evenodd"
+            strokeLinejoin="round"
+            strokeMiterlimit="2"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <circle cx="11.998" cy="11.998" fill-rule="nonzero" r="9.998" />
+            <circle cx="11.998" cy="11.998" fillRule="nonzero" r="9.998" />
           </svg>
-          FUNDACIÓN ARTÍSTICA INGENIO MUSICAL
+          {basicInfo?.companyName
+            ? basicInfo?.companyName
+            : "FUNDACIÓN ARTÍSTICA INGENIO MUSICAL LUZ"}
         </NavbarBootstrap.Brand>
         <NavbarBootstrap.Toggle aria-controls="basic-navbar-nav" />
         <NavbarBootstrap.Collapse
@@ -40,29 +70,48 @@ function Navbar(props: ClassName) {
             </svg>
             <Button className="btn-navbar" variant="outline-light">
               <NavDropdown
-                title="NOSOTROS"
+                title={dropdown}
                 id="basic-nav-dropdown"
                 menuVariant="dark"
               >
-                <NavDropdown.Item href="#action/3.1">Historia</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Misión/Vision
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Fotogragía y Video
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.4">
-                  Proyectos
-                </NavDropdown.Item>
+                {basicInfo &&
+                  basicInfo.dropdownOptions &&
+                  basicInfo.dropdownOptions.map((opt: string, i: number) => {
+                    return (
+                      <NavDropdown.Item href={`#action/3.${i + 1}`}>
+                        {opt}
+                      </NavDropdown.Item>
+                    );
+                  })}
+
+                {!basicInfo &&
+                  defaultDropdown.map((opt: string, i: number) => {
+                    return (
+                      <NavDropdown.Item href={`#action/3.${i + 1}`}>
+                        {opt}
+                      </NavDropdown.Item>
+                    );
+                  })}
               </NavDropdown>
             </Button>
+            {basicInfo &&
+              basicInfo.navbarOptions &&
+              basicInfo.navbarOptions.map((opt: string, index: number) => {
+                return index === 0 ? null : (
+                  <Button className="btn-navbar" variant="outline-light">
+                    {opt}
+                  </Button>
+                );
+              })}
 
-            <Button className="btn-navbar" variant="outline-light">
-              SERVICIOS
-            </Button>
-            <Button className="btn-navbar" variant="outline-light">
-              CONTACTO
-            </Button>
+            {!basicInfo &&
+              defaultNavbarOpt.map((opt: string, index: number) => {
+                return index === 0 ? null : (
+                  <Button className="btn-navbar" variant="outline-light">
+                    {opt}
+                  </Button>
+                );
+              })}
           </Nav>
         </NavbarBootstrap.Collapse>
       </Container>
