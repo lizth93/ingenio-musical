@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import CarouselBootstrap from "react-bootstrap/Carousel";
 import getImages from "api/getImages";
+import styled from "styled-components";
 
-function Carousel() {
+interface Props {
+  className?: string;
+}
+function Carousel(props: Props) {
   const [images, setImages] = useState<any>([]);
 
   useEffect(() => {
@@ -14,10 +18,10 @@ function Carousel() {
   }, []);
 
   return (
-    <CarouselBootstrap>
+    <CarouselBootstrap className={props.className}>
       {images.map((url: string) => (
         <CarouselBootstrap.Item key={url}>
-          <img className="d-block w-100" src={url} alt="" />
+          <img className="d-block w-100 image" src={url} alt="" />
           <CarouselBootstrap.Caption>
             <h3>First slide label</h3>
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
@@ -28,4 +32,27 @@ function Carousel() {
   );
 }
 
-export default Carousel;
+export default styled(Carousel)`
+  .carousel-control-next,
+  .carousel-control-prev {
+    border-radius: 50px;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.6rem;
+    color: red;
+    border: brown;
+    border: groove;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+
+  .carousel-control-next {
+    margin-right: 1rem;
+  }
+
+  .carousel-control-prev {
+    margin-left: 1rem;
+  }
+`;
