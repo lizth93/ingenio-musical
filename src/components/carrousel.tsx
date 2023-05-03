@@ -33,6 +33,9 @@ function Carousel(props: Props) {
 }
 
 export default styled(Carousel)`
+  .image {
+    max-height: 600px;
+  }
   .carousel-control-next,
   .carousel-control-prev {
     border-radius: 50px;
