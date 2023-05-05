@@ -6,13 +6,13 @@ const client = contentful.createClient({
   accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
 });
 
-async function getBasicInformation() {
+async function getInfoAboutUs() {
   try {
-    const entries = await client.getEntry("4Da1ywwzrWELyAiEUa374C");
+    const entries = await client.getEntry("4rhXCfxrSswNSPPQkxfbYW");
     return entries.fields;
   } catch (error) {
     console.error(error);
   }
 }
 
-export default getBasicInformation;
+export default getInfoAboutUs;

@@ -1,18 +1,30 @@
-import * as contentful from "contentful";
+interface Images {
+  title: string;
+  description: string;
+  file: {
+    url: string;
+    fileName: string;
+    contentType: string;
+  };
+}
+interface Fields {
+  fields: Images;
+}
+
+const contentful = require("contentful");
 
 const client = contentful.createClient({
-  space: "1j289lbm44xd",
-  environment: "master",
-  accessToken: "3aseAvH-_4d0qxpGhKnrbVOEPby-ep45WHm93HUqwA8",
+  space: process.env.REACT_APP_CONTENTFUL_SPACE_ID,
+  environment: process.env.REACT_APP_CONTENTFUL_ENVIRONMENT,
+  accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
 });
 
 async function getImages() {
   try {
-    const entries = await client.getEntries();
-    const assets = entries.includes?.Asset;
-    console.log(assets, "assets");
-    const imageUrls = assets?.map((asset) => asset.fields);
-    console.log(imageUrls, "images luz");
+    const entries = await client.getEntry("78Pv7uCbu7GcJoOboO42vZ");
+    console.log(entries.fields.heroImages, "entries what have luz ");
+    const asset = entries.fields.heroImages;
+    const imageUrls = asset.map((entry: Fields) => entry.fields);
     return imageUrls;
   } catch (error) {
     console.error(error);
