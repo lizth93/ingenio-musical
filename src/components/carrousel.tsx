@@ -2,31 +2,12 @@ import { useEffect, useState } from "react";
 import CarouselBootstrap from "react-bootstrap/Carousel";
 import getImages from "api/getImages";
 import styled from "styled-components";
-import Container from "./layout/container";
 
 interface Props {
   className?: string;
 }
-
-interface Images {
-  title: string;
-  description: string;
-  file: {
-    url: string;
-    details: {
-      size: number;
-      image: {
-        width: number;
-        height: number;
-      };
-    };
-    fileName: string;
-    contentType: string;
-  };
-}
-
 function Carousel(props: Props) {
-  const [images, setImages] = useState<Images[] | undefined>([]);
+  const [images, setImages] = useState<any>([]);
 
   useEffect(() => {
     async function loadImages() {
@@ -37,24 +18,24 @@ function Carousel(props: Props) {
   }, []);
 
   return (
-    <Container className={props.className}>
-      <CarouselBootstrap>
-        {images &&
-          images.map((img) => (
-            <CarouselBootstrap.Item key={img.file.url}>
-              <img className="d-block w-100 image" src={img.file.url} alt="" />
-              <CarouselBootstrap.Caption>
-                <h3>{img.title}</h3>
-                <p>{img.description}</p>
-              </CarouselBootstrap.Caption>
-            </CarouselBootstrap.Item>
-          ))}
-      </CarouselBootstrap>
-    </Container>
+    <CarouselBootstrap className={props.className}>
+      {images.map((url: string) => (
+        <CarouselBootstrap.Item key={url}>
+          <img className="d-block w-100 image" src={url} alt="" />
+          <CarouselBootstrap.Caption>
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </CarouselBootstrap.Caption>
+        </CarouselBootstrap.Item>
+      ))}
+    </CarouselBootstrap>
   );
 }
 
 export default styled(Carousel)`
+  .image {
+    max-height: 600px;
+  }
   .carousel-control-next,
   .carousel-control-prev {
     border-radius: 50px;
