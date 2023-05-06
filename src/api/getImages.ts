@@ -10,9 +10,7 @@ async function getImages() {
   try {
     const entries = await client.getEntries();
     const assets = entries.includes?.Asset;
-    console.log(assets, "assets");
-    const imageUrls = assets?.map((asset) => asset.fields);
-    console.log(imageUrls, "images luz");
+    const imageUrls = assets?.map((asset) => asset.fields.file.url);
     return imageUrls;
   } catch (error) {
     console.error(error);
