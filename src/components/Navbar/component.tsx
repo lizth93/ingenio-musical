@@ -26,10 +26,8 @@ function Navbar(props: ClassName) {
         : "NOSOTROS";
 
       setDropdown(dropdownOpt);
-      console.log(dropdownOpt);
     }
   }, [basicInfo]);
-  console.log(basicInfo, "basic info");
 
   const defaultNavbarOpt = ["NOSOTROS", "SERVICIOS", "CONTACTO"];
   const defaultDropdown = ["Misión/Vision", "Fotografía y Video", "Proyectos"];
@@ -78,7 +76,7 @@ function Navbar(props: ClassName) {
                   basicInfo.dropdownOptions &&
                   basicInfo.dropdownOptions.map((opt: string, i: number) => {
                     return (
-                      <NavDropdown.Item href={`#action/3.${i + 1}`}>
+                      <NavDropdown.Item key={i} href={`#action/3.${i + 1}`}>
                         {opt}
                       </NavDropdown.Item>
                     );
@@ -87,7 +85,7 @@ function Navbar(props: ClassName) {
                 {!basicInfo &&
                   defaultDropdown.map((opt: string, i: number) => {
                     return (
-                      <NavDropdown.Item href={`#action/3.${i + 1}`}>
+                      <NavDropdown.Item key={i} href={`#action/3.${i + 1}`}>
                         {opt}
                       </NavDropdown.Item>
                     );
@@ -96,18 +94,26 @@ function Navbar(props: ClassName) {
             </Button>
             {basicInfo &&
               basicInfo.navbarOptions &&
-              basicInfo.navbarOptions.map((opt: string, index: number) => {
-                return index === 0 ? null : (
-                  <Button className="btn-navbar" variant="outline-light">
+              basicInfo.navbarOptions.map((opt: string, i: number) => {
+                return i === 0 ? null : (
+                  <Button
+                    className="btn-navbar"
+                    key={i}
+                    variant="outline-light"
+                  >
                     {opt}
                   </Button>
                 );
               })}
 
             {!basicInfo &&
-              defaultNavbarOpt.map((opt: string, index: number) => {
-                return index === 0 ? null : (
-                  <Button className="btn-navbar" variant="outline-light">
+              defaultNavbarOpt.map((opt: string, i: number) => {
+                return i === 0 ? null : (
+                  <Button
+                    key={i}
+                    className="btn-navbar"
+                    variant="outline-light"
+                  >
                     {opt}
                   </Button>
                 );
