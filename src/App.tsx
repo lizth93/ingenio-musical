@@ -1,8 +1,9 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "components/Navbar";
-import Carrousel from "components/Carrousel";
+
 import AboutUs from "components/AboutUs";
+import Carousel from "components/carousel";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
         <Navbar />
       </header>
       <main>
-        <Carrousel />
+        <Carousel />
         <AboutUs />
       </main>
     </div>
