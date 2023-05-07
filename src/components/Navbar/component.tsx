@@ -26,13 +26,19 @@ function Navbar(props: ClassName) {
         : "NOSOTROS";
 
       setDropdown(dropdownOpt);
-      console.log(dropdownOpt);
     }
   }, [basicInfo]);
-  console.log(basicInfo, "basic info");
 
   const defaultNavbarOpt = ["NOSOTROS", "SERVICIOS", "CONTACTO"];
-  const defaultDropdown = ["Misión/Vision", "Fotografía y Video", "Proyectos"];
+  const defaultDropdown = ["Misión/Visions", "Fotografía y Video", "Proyectos"];
+
+  const navBarDropdownOptions = basicInfo.dropdownOptions
+    ? basicInfo.dropdownOptions
+    : defaultDropdown;
+
+  const navBarMenuOptions = basicInfo.navbarOptions
+    ? basicInfo.navbarOptions
+    : defaultNavbarOpt;
 
   return (
     <NavbarBootstrap className={props.className} expand="lg">
@@ -74,44 +80,27 @@ function Navbar(props: ClassName) {
                 id="basic-nav-dropdown"
                 menuVariant="dark"
               >
-                {basicInfo &&
-                  basicInfo.dropdownOptions &&
-                  basicInfo.dropdownOptions.map((opt: string, i: number) => {
-                    return (
-                      <NavDropdown.Item href={`#action/3.${i + 1}`}>
-                        {opt}
-                      </NavDropdown.Item>
-                    );
-                  })}
-
-                {!basicInfo &&
-                  defaultDropdown.map((opt: string, i: number) => {
-                    return (
-                      <NavDropdown.Item href={`#action/3.${i + 1}`}>
-                        {opt}
-                      </NavDropdown.Item>
-                    );
-                  })}
+                {navBarDropdownOptions.map((opt: string, i: number) => {
+                  return (
+                    <NavDropdown.Item key={i} href={`#action-${i}`}>
+                      {opt}
+                    </NavDropdown.Item>
+                  );
+                })}
               </NavDropdown>
             </Button>
-            {basicInfo &&
-              basicInfo.navbarOptions &&
-              basicInfo.navbarOptions.map((opt: string, index: number) => {
-                return index === 0 ? null : (
-                  <Button className="btn-navbar" variant="outline-light">
-                    {opt}
-                  </Button>
-                );
-              })}
-
-            {!basicInfo &&
-              defaultNavbarOpt.map((opt: string, index: number) => {
-                return index === 0 ? null : (
-                  <Button className="btn-navbar" variant="outline-light">
-                    {opt}
-                  </Button>
-                );
-              })}
+            {navBarMenuOptions.map((opt: string, i: number) => {
+              return i === 0 ? null : (
+                <Button
+                  className="btn-navbar"
+                  key={i}
+                  variant="outline-light"
+                  href={`#section-${i}`}
+                >
+                  {opt}
+                </Button>
+              );
+            })}
           </Nav>
         </NavbarBootstrap.Collapse>
       </Container>
