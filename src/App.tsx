@@ -7,9 +7,13 @@ import AboutUs from "components/AboutUs";
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Carousel />
-      <AboutUs />
+      <header>
+        <Navbar />
+      </header>
+      <main>
+        <Carousel />
+        <AboutUs />
+      </main>
     </div>
   );
 }
