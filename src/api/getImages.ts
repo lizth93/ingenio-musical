@@ -10,7 +10,6 @@ interface Images {
 interface Fields {
   fields: Images;
 }
-
 const contentful = require("contentful");
 
 const client = contentful.createClient({
@@ -22,7 +21,6 @@ const client = contentful.createClient({
 async function getImages() {
   try {
     const entries = await client.getEntry("78Pv7uCbu7GcJoOboO42vZ");
-    console.log(entries.fields.heroImages, "entries what have luz ");
     const asset = entries.fields.heroImages;
     const imageUrls = asset.map((entry: Fields) => entry.fields);
     return imageUrls;
