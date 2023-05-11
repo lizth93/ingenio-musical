@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import imgNosotros from "defaultImages/daniel-working.png";
 import Container from "components/layout/container";
 import getInfoAboutUs from "api/getAboutUs";
-import Button from "components/button";
 
 interface Props {
   className?: string;
