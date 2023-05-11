@@ -97,7 +97,7 @@ function Navbar(props: ClassName) {
                   variant="outline-light"
                   href={`#section-${i}`}
                 >
-                  {opt}
+                  <span className="btn-navbar-opt">{opt}</span>
                 </Button>
               );
             })}

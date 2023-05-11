@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 
 import imgNosotros from "defaultImages/daniel-working.png";
 import Container from "components/layout/container";
 import getInfoAboutUs from "api/getAboutUs";
-import { white } from "constants/styles";
 
 interface Props {
   className?: string;
@@ -63,7 +61,12 @@ function AboutUs(props: Props) {
             <span style={{ color: "red" }}>{secondLetter}</span>
             {restOfTitle}
           </h2>
-          <p className="about-paragraph">{paragraph}</p>
+          <p className="about-paragraph">
+            {paragraph}{" "}
+            <a className="btn-link-more" href="#more">
+              VER MÁS
+            </a>
+          </p>
         </section>
         <img className="about-img" src={url} alt={title} />
       </div>
@@ -71,36 +74,4 @@ function AboutUs(props: Props) {
   );
 }
 
-export default styled(AboutUs)`
-  color: ${white};
-  padding-top: 6rem;
-
-  .section-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    justify-content: center;
-  }
-
-  .about {
-    &-description {
-      display: flex;
-      gap: 4rem;
-      justify-content: center;
-    }
-    &-title {
-      text-align: initial;
-      font-weight: 800;
-      font-size: 5rem;
-    }
-
-    &-paragraph {
-      font-size: 2rem;
-      text-align: initial;
-    }
-    &-img {
-      width: 50%;
-      border-radius: 4px;
-    }
-  }
-`;
+export default AboutUs;

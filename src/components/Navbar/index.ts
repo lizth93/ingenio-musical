@@ -42,6 +42,11 @@ export default styled(Navbar)`
   }
   .btn-navbar {
     font-weight: 600;
+    display: flex;
+
+    &-opt {
+      align-self: center;
+    }
   }
 
   .btn {
