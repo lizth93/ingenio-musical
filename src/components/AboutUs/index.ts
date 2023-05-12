@@ -4,7 +4,8 @@ import { white } from "constants/styles";
 
 export default styled(AboutUs)`
   color: ${white};
-  padding-top: 6rem;
+  padding: 6rem 0 6rem 0;
+  width: 90%;
 
   .section-container {
     display: flex;

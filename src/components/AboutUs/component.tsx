@@ -32,7 +32,6 @@ function AboutUs(props: Props) {
     async function loadInfoAboutUs() {
       const data = await getInfoAboutUs();
       setInfoAbout(data);
-      console.log(data, "data luz ");
     }
     loadInfoAboutUs();
   }, []);

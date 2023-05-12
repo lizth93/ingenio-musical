@@ -55,6 +55,7 @@ function Carousel(props: Props) {
 }
 
 export default styled(Carousel)`
+  width: 90%;
   .carousel-control-next,
   .carousel-control-prev {
     border-radius: 50px;

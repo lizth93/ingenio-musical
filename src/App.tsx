@@ -4,6 +4,7 @@ import Navbar from "components/Navbar";
 
 import AboutUs from "components/AboutUs";
 import Carousel from "components/carousel";
+import MoreAboutUs from "components/MoreAboutUs";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <main>
         <Carousel />
         <AboutUs />
+        <MoreAboutUs />
       </main>
     </div>
   );
