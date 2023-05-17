@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Accordion from "components/accordion";
+import Accordion from "components/Accordion";
 import getSeeMore from "api/getSeeMore";
 import {
   dummyHistoryDescription,

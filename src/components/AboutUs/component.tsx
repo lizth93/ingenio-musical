@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import imgNosotros from "defaultImages/daniel-working.png";
 import Container from "components/layout/container";
 import getInfoAboutUs from "api/getAboutUs";
+import { dummyDescriptionAboutUs } from "constants/dummyData";
 
 interface Props {
   className?: string;
@@ -46,7 +47,7 @@ function AboutUs(props: Props) {
 
   const paragraph = infoAbout?.description.content[0].content[0].value
     ? infoAbout.description.content[0].content[0].value
-    : "Ingenio Musical hace parte de la Industria creativa musical. Contamos con un estudio de grabación y post producción de audio.";
+    : dummyDescriptionAboutUs;
 
   const url = infoAbout?.imagenNosotros.fields.file.url
     ? infoAbout?.imagenNosotros.fields.file.url
