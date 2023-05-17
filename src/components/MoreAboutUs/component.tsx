@@ -6,35 +6,8 @@ import {
   dummyIntroductionSeeMore,
   dummyMisionVision,
 } from "constants/dummyData";
-
-interface Description {
-  content: {
-    value: string;
-  }[];
-}
-interface Props {
-  className?: string;
-}
-interface Data {
-  backgroundImagen: {
-    fields: {
-      file: {
-        url: string;
-      };
-    };
-  };
-  descriptionHistory: {
-    content: Description[];
-  };
-  descriptionMisionVision: {
-    content: Description[];
-  };
-  historyTitle: string;
-  misionVisionTitle: string;
-  introductionText: {
-    content: Description[];
-  };
-}
+import imgSectionMore from "defaultImages/SeeMore.png";
+import { Props, Data, Description } from "./interfaces";
 
 function MoreAboutUs(props: Props) {
   const [data, setData] = useState<Data>();
@@ -43,16 +16,9 @@ function MoreAboutUs(props: Props) {
     async function loadInfoSeeMore() {
       const data = await getSeeMore();
       setData(data);
-      console.log(data, "what data is comming");
     }
     loadInfoSeeMore();
   }, []);
-
-  function getDescription(category: Description[] | undefined) {
-    return category?.map((e) =>
-      e.content.map((elm, i) => <p key={i}>{elm.value}</p>)
-    );
-  }
 
   const historyTitle = data?.historyTitle ? data?.historyTitle : "Historia";
 
@@ -68,18 +34,27 @@ function MoreAboutUs(props: Props) {
 
   const introductionText = getDescription(data?.introductionText.content);
 
-  const backgroundImage = data?.backgroundImagen.fields.file.url;
+  function getDescription(category: Description[] | undefined) {
+    return category?.map((e) =>
+      e.content.map((elm, i) => <p key={i}>{elm.value}</p>)
+    );
+  }
+
+  const backgroundImage = data?.backgroundImagen.fields.file.url
+    ? data?.backgroundImagen.fields.file.url
+    : imgSectionMore;
 
   return (
     <div
       className={props.className}
       id="more"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+      }}
     >
       {introductionText ? introductionText : dummyIntroductionSeeMore}
       <div className="accordion-container">
         <Accordion title={historyTitle}>
-          {" "}
           {historyDescription ? historyDescription : dummyHistoryDescription}
         </Accordion>
         <Accordion title={misionVisionTitle}>
