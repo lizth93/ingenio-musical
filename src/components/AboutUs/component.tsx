@@ -62,7 +62,7 @@ function AboutUs(props: Props) {
           </h2>
           <p className="about-paragraph">
             {paragraph}{" "}
-            <a className="btn-link-more" href="#more">
+            <a className="btn-link-more" href="#action-1">
               VER MÁS
             </a>
           </p>

@@ -47,7 +47,7 @@ function MoreAboutUs(props: Props) {
   return (
     <div
       className={props.className}
-      id="more"
+      id="action-1"
       style={{
         backgroundImage: `url(${backgroundImage})`,
       }}
