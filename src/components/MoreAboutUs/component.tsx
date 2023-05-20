@@ -8,7 +8,7 @@ import {
 import imgSectionMore from "defaultImages/SeeMore.png";
 import { Props, Data, Description } from "./interfaces";
 import Container from "components/layout/container";
-import AccordionBootstrap from "components/Accordion";
+import AccordionBootstrap from "components/AccordionBootstrap";
 
 function MoreAboutUs(props: Props) {
   const [data, setData] = useState<Data>();
