@@ -56,10 +56,10 @@ function MoreAboutUs(props: Props) {
       >
         {introductionText ? introductionText : dummyIntroductionSeeMore}
         <div className="accordion-container">
-          <Accordion title={historyTitle}>
+          <Accordion title={historyTitle} eventKey={"0"}>
             {historyDescription ? historyDescription : dummyHistoryDescription}
           </Accordion>
-          <Accordion title={misionVisionTitle}>
+          <Accordion title={misionVisionTitle} eventKey={"1"}>
             {misionVisiónDescription
               ? misionVisiónDescription
               : dummyMisionVision}

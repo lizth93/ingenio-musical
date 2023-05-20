@@ -7,11 +7,12 @@ interface Props {
   children: ReactNode;
   title: string;
   className?: string;
+  eventKey: string;
 }
 function Accordion(props: Props) {
   return (
     <AccordionBootstrap className={props.className} defaultActiveKey="0">
-      <AccordionBootstrap.Item eventKey="0">
+      <AccordionBootstrap.Item eventKey={props.eventKey}>
         <AccordionBootstrap.Header>{props.title}</AccordionBootstrap.Header>
         <AccordionBootstrap.Body>{props.children}</AccordionBootstrap.Body>
       </AccordionBootstrap.Item>
