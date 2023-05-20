@@ -10,7 +10,8 @@ type ButtonVariant =
   | "info"
   | "light"
   | "dark"
-  | "link";
+  | "link"
+  | "outline-light";
 interface BootstrapButtonProviderProps {
   variant: ButtonVariant;
   children: ReactNode;
