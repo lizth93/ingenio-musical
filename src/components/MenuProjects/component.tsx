@@ -23,7 +23,6 @@ export default function MenuProjects(props: Props) {
     d.content.map((text) => <p key={text.value}>{text.value}</p>)
   );
 
-  console.log(projects);
   const buttonProjects = projects?.nameButtons
     ? projects?.nameButtons[0]
     : "VER PROYECTOS";
