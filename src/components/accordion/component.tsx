@@ -1,7 +1,5 @@
-import { black, redColor, white } from "constants/styles";
 import { ReactNode } from "react";
 import AccordionBootstrap from "react-bootstrap/Accordion";
-import styled from "styled-components";
 
 interface Props {
   children: ReactNode;
