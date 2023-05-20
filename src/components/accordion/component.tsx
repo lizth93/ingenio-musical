@@ -9,7 +9,7 @@ interface Props {
   className?: string;
   eventKey: string;
 }
-function Accordion(props: Props) {
+export default function Accordion(props: Props) {
   return (
     <AccordionBootstrap className={props.className} defaultActiveKey="0">
       <AccordionBootstrap.Item eventKey={props.eventKey}>
@@ -19,19 +19,3 @@ function Accordion(props: Props) {
     </AccordionBootstrap>
   );
 }
-
-export default styled(Accordion)`
-  .accordion-button {
-    color: ${redColor};
-
-    font-weight: 500;
-    background-color: ${black};
-  }
-  .accordion-item {
-    background-color: ${black};
-    color: ${white};
-    text-align: left;
-    border: none;
-    font-size: 21px;
-  }
-`;
