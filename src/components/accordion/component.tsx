@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import AccordionBootstrap from "react-bootstrap/Accordion";
+import { Accordion } from "react-bootstrap";
 
 interface Props {
   children: ReactNode;
@@ -7,13 +7,13 @@ interface Props {
   className?: string;
   eventKey: string;
 }
-export default function AccordionSeeMore(props: Props) {
+export default function AccordionBootstrap(props: Props) {
   return (
-    <AccordionBootstrap className={props.className} defaultActiveKey="0">
-      <AccordionBootstrap.Item eventKey={props.eventKey}>
-        <AccordionBootstrap.Header>{props.title}</AccordionBootstrap.Header>
-        <AccordionBootstrap.Body>{props.children}</AccordionBootstrap.Body>
-      </AccordionBootstrap.Item>
-    </AccordionBootstrap>
+    <Accordion className={props.className} defaultActiveKey="0">
+      <Accordion.Item eventKey={props.eventKey}>
+        <Accordion.Header>{props.title}</Accordion.Header>
+        <Accordion.Body>{props.children}</Accordion.Body>
+      </Accordion.Item>
+    </Accordion>
   );
 }

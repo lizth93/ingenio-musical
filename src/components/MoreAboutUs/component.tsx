@@ -8,7 +8,7 @@ import {
 import imgSectionMore from "defaultImages/SeeMore.png";
 import { Props, Data, Description } from "./interfaces";
 import Container from "components/layout/container";
-import Accordion from "components/Accordion";
+import AccordionBootstrap from "components/Accordion";
 
 function MoreAboutUs(props: Props) {
   const [data, setData] = useState<Data>();
@@ -56,14 +56,14 @@ function MoreAboutUs(props: Props) {
       >
         {introductionText ? introductionText : dummyIntroductionSeeMore}
         <div className="accordion-container">
-          <Accordion title={historyTitle} eventKey={"0"}>
+          <AccordionBootstrap title={historyTitle} eventKey={"0"}>
             {historyDescription ? historyDescription : dummyHistoryDescription}
-          </Accordion>
-          <Accordion title={misionVisionTitle} eventKey={"1"}>
+          </AccordionBootstrap>
+          <AccordionBootstrap title={misionVisionTitle} eventKey={"1"}>
             {misionVisiónDescription
               ? misionVisiónDescription
               : dummyMisionVision}
-          </Accordion>
+          </AccordionBootstrap>
         </div>
       </div>
     </Container>
