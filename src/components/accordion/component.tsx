@@ -7,7 +7,7 @@ interface Props {
   className?: string;
   eventKey: string;
 }
-export default function Accordion(props: Props) {
+export default function AccordionSeeMore(props: Props) {
   return (
     <AccordionBootstrap className={props.className} defaultActiveKey="0">
       <AccordionBootstrap.Item eventKey={props.eventKey}>

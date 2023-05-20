@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import Accordion from "./component";
+import AccordionSeeMore from "./component";
 import { black, redColor, white } from "constants/styles";
 
-export default styled(Accordion)`
+export default styled(AccordionSeeMore)`
   .accordion-button {
     color: ${redColor};
 
