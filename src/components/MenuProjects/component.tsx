@@ -1,8 +1,8 @@
+import { useEffect, useState } from "react";
 import { ReactSVG } from "react-svg";
 import getProjects from "api/getProjects";
 import Container from "components/layout/container";
 import { dummyDescriptionProjects } from "constants/dummyData";
-import { useEffect, useState } from "react";
 import { Projects, Props } from "./interfaces";
 import Button from "components/button";
 
@@ -37,7 +37,6 @@ export default function MenuProjects(props: Props) {
     </div>
   ));
 
-  console.log(description, "hola");
   return (
     <Container className={props.className}>
       <div className="section-projects" id={"action-2"}>
