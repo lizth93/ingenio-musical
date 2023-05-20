@@ -23,6 +23,10 @@ export default function MenuProjects(props: Props) {
     d.content.map((text) => <p key={text.value}>{text.value}</p>)
   );
 
+  console.log(projects);
+  const buttonProjects = projects?.nameButtons
+    ? projects?.nameButtons[0]
+    : "VER PROYECTOS";
   const optionsImage = projects?.menuOptions.map((opt) => (
     <div className="menu" key={opt.fields.title}>
       <ReactSVG src={opt.fields.file.url} className="menu-img" />
@@ -32,7 +36,7 @@ export default function MenuProjects(props: Props) {
         key={opt.fields.title}
         variant="outline-light"
       >
-        <span className="btn-navbar-opt">VER PROYECTOS</span>
+        <span className="btn-navbar-opt">{buttonProjects}</span>
       </Button>
     </div>
   ));

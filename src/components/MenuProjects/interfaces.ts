@@ -7,6 +7,7 @@ export interface Projects {
     content: Description[];
   };
   menuOptions: MenuOptions[];
+  nameButtons: string[];
 }
 
 interface Description {
