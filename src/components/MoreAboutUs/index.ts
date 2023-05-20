@@ -4,16 +4,20 @@ import { white } from "constants/styles";
 
 export default styled(MoreAboutUs)`
   color: ${white};
-  padding: 6rem 5rem 6rem 5rem;
+  padding: 0rem 5rem 6rem 5rem;
   line-height: 2.5rem;
   font-size: 1.8rem;
   font-weight: 400;
   width: 100%;
+  text-align: left;
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 
+  .accordion-section {
+    padding: 6rem 5rem 6rem 5rem;
+  }
   .accordion {
     &-container {
       display: grid;

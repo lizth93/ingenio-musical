@@ -4,6 +4,7 @@ import Container from "components/layout/container";
 import { dummyDescriptionProjects } from "constants/dummyData";
 import { useEffect, useState } from "react";
 import { Projects, Props } from "./interfaces";
+import Button from "components/button";
 
 export default function MenuProjects(props: Props) {
   const [projects, setProjects] = useState<Projects>();
@@ -12,7 +13,6 @@ export default function MenuProjects(props: Props) {
     async function loadInfoProjects() {
       const data = await getProjects();
       setProjects(data);
-      console.log(data, "projects");
     }
     loadInfoProjects();
   }, []);
@@ -24,17 +24,26 @@ export default function MenuProjects(props: Props) {
   );
 
   const optionsImage = projects?.menuOptions.map((opt) => (
-    <div className="menu-options" key={opt.fields.title}>
+    <div className="menu" key={opt.fields.title}>
       <ReactSVG src={opt.fields.file.url} className="menu-img" />
-      <p>{opt.fields.title}</p>
+      <p className="menu-title">{opt.fields.title}</p>
+      <Button
+        className="btn-navbar menu-btn-options"
+        key={opt.fields.title}
+        variant="outline-light"
+      >
+        <span className="btn-navbar-opt">VER PROYECTOS</span>
+      </Button>
     </div>
   ));
 
   console.log(description, "hola");
   return (
     <Container className={props.className}>
-      {textDescription ? textDescription : dummyDescriptionProjects}
-      {optionsImage}
+      <div className="section-projects" id={"action-2"}>
+        {textDescription ? textDescription : dummyDescriptionProjects}
+        <menu className="menu-options">{optionsImage}</menu>
+      </div>
     </Container>
   );
 }

@@ -8,6 +8,7 @@ import {
 } from "constants/dummyData";
 import imgSectionMore from "defaultImages/SeeMore.png";
 import { Props, Data, Description } from "./interfaces";
+import Container from "components/layout/container";
 
 function MoreAboutUs(props: Props) {
   const [data, setData] = useState<Data>();
@@ -45,25 +46,27 @@ function MoreAboutUs(props: Props) {
     : imgSectionMore;
 
   return (
-    <div
-      className={props.className}
-      id="action-1"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-      }}
-    >
-      {introductionText ? introductionText : dummyIntroductionSeeMore}
-      <div className="accordion-container">
-        <Accordion title={historyTitle}>
-          {historyDescription ? historyDescription : dummyHistoryDescription}
-        </Accordion>
-        <Accordion title={misionVisionTitle}>
-          {misionVisiónDescription
-            ? misionVisiónDescription
-            : dummyMisionVision}
-        </Accordion>
+    <Container className={props.className}>
+      <div
+        className="accordion-section"
+        id="action-1"
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}
+      >
+        {introductionText ? introductionText : dummyIntroductionSeeMore}
+        <div className="accordion-container">
+          <Accordion title={historyTitle}>
+            {historyDescription ? historyDescription : dummyHistoryDescription}
+          </Accordion>
+          <Accordion title={misionVisionTitle}>
+            {misionVisiónDescription
+              ? misionVisiónDescription
+              : dummyMisionVision}
+          </Accordion>
+        </div>
       </div>
-    </div>
+    </Container>
   );
 }
 
