@@ -8,10 +8,12 @@ export default styled(MenuProjects)`
   line-height: 2.5rem;
   font-size: 1.8rem;
   text-align: left;
+  min-height: 800px;
 
   .section-projects {
     background-color: ${darkBlue};
     padding: 6rem 5rem 6rem 5rem;
+    min-height: 700px;
   }
   .menu {
     align-items: center;

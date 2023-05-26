@@ -59,7 +59,7 @@ function MoreAboutUs(props: Props) {
           <AccordionBootstrap title={historyTitle} eventKey={"0"}>
             {historyDescription ? historyDescription : dummyHistoryDescription}
           </AccordionBootstrap>
-          <AccordionBootstrap title={misionVisionTitle} eventKey={"1"}>
+          <AccordionBootstrap title={misionVisionTitle} eventKey={"0"}>
             {misionVisiónDescription
               ? misionVisiónDescription
               : dummyMisionVision}

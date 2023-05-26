@@ -6,18 +6,27 @@ import AboutUs from "components/AboutUs";
 import Carousel from "components/carousel";
 import MoreAboutUs from "components/MoreAboutUs";
 import MenuProjects from "components/MenuProjects";
+import { useState } from "react";
 
 function App() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleSetActiveIndex = (index: number) => {
+    setActiveIndex(index);
+  };
   return (
     <div className="App">
       <header>
-        <Navbar />
+        <Navbar onSetActiveIndex={handleSetActiveIndex} />
       </header>
       <main>
         <Carousel />
         <AboutUs />
         <MoreAboutUs />
-        <MenuProjects />
+        <MenuProjects
+          activeIndex={activeIndex}
+          onSetActiveIndex={handleSetActiveIndex}
+        />
       </main>
     </div>
   );
