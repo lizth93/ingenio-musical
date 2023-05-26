@@ -1,51 +1,79 @@
 import { useEffect, useState } from "react";
-import { ReactSVG } from "react-svg";
 import getProjects from "api/getProjects";
 import Container from "components/layout/container";
 import { dummyDescriptionProjects } from "constants/dummyData";
-import { Projects, Props } from "./interfaces";
-import Button from "components/button";
+import { Data } from "./interfaces";
+import Carousel from "react-bootstrap/Carousel";
+import getServices from "api/getServices";
+import { getImages } from "./utils/getImages";
+import { getButtonName } from "./utils/getButtonName";
+import { getDescriptionContent } from "./utils/getDescription";
+
+export interface Props {
+  className?: string;
+  activeIndex: number;
+  onSetActiveIndex: (index: number) => void;
+}
 
 export default function MenuProjects(props: Props) {
-  const [projects, setProjects] = useState<Projects>();
+  const [projects, setProjects] = useState<Data>();
+  const [services, setServices] = useState<Data>();
 
   useEffect(() => {
     async function loadInfoProjects() {
-      const data = await getProjects();
-      setProjects(data);
+      const dataProjects = await getProjects();
+      setProjects(dataProjects);
+
+      const dataServices = await getServices();
+      setServices(dataServices);
     }
     loadInfoProjects();
   }, []);
 
-  const description = projects?.description.content;
-
-  const textDescription = description?.map((d) =>
-    d.content.map((text) => <p key={text.value}>{text.value}</p>)
+  const textDescriptionProjects = getDescriptionContent(
+    projects?.description.content
+  );
+  const textDescriptionServices = getDescriptionContent(
+    services?.description.content
   );
 
-  const buttonProjects = projects?.nameButtons
-    ? projects?.nameButtons[0]
-    : "VER PROYECTOS";
-  const optionsImage = projects?.menuOptions.map((opt) => (
-    <div className="menu" key={opt.fields.title}>
-      <ReactSVG src={opt.fields.file.url} className="menu-img" />
-      <p className="menu-title">{opt.fields.title}</p>
-      <Button
-        className="btn-navbar menu-btn-options"
-        key={opt.fields.title}
-        variant="outline-light"
-      >
-        <span className="btn-navbar-opt">{buttonProjects}</span>
-      </Button>
-    </div>
-  ));
+  const buttonProjects = getButtonName(projects?.nameButtons, "VER PROYECTOS");
+  const buttonServices = getButtonName(services?.nameButtons, "VER MAS");
+
+  const imagesProjects = getImages(projects, buttonProjects);
+  const imagesServices = getImages(services, buttonServices);
+
+  const handleActiveIndex = (index: number) => {
+    props.onSetActiveIndex(index);
+  };
 
   return (
-    <Container className={props.className}>
-      <div className="section-projects" id={"action-2"}>
-        {textDescription ? textDescription : dummyDescriptionProjects}
-        <menu className="menu-options">{optionsImage}</menu>
-      </div>
+    <Container className={props.className} id={"carousel-menu"}>
+      <Carousel
+        fade
+        className="carousel-menu"
+        interval={null}
+        activeIndex={props.activeIndex}
+        onSelect={handleActiveIndex}
+      >
+        <Carousel.Item>
+          <div className="section-projects">
+            <h2>{projects?.titleOptional ? projects?.titleOptional : ""}</h2>
+            {textDescriptionProjects
+              ? textDescriptionProjects
+              : dummyDescriptionProjects}
+            <menu className="menu-options">{imagesProjects}</menu>
+          </div>
+        </Carousel.Item>
+
+        <Carousel.Item>
+          <div className="section-projects">
+            <h2>{services?.titleOptional ? services?.titleOptional : ""}</h2>
+            {textDescriptionServices ? textDescriptionServices : ""}
+            <menu className="menu-options">{imagesServices}</menu>
+          </div>
+        </Carousel.Item>
+      </Carousel>
     </Container>
   );
 }

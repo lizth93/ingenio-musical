@@ -7,7 +7,9 @@ import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
 import getBasicInformation from "api/getBasicInformation";
 
-function Navbar(props: ClassName) {
+function Navbar(
+  props: ClassName & { onSetActiveIndex: (index: number) => void }
+) {
   const [basicInfo, setBasicInfo] = useState<any>([]);
   const [dropdown, setDropdown] = useState<string>("NOSOTROS");
 
@@ -40,8 +42,20 @@ function Navbar(props: ClassName) {
     ? basicInfo.navbarOptions
     : defaultNavbarOpt;
 
+  const handleActiveIndex = (index: number, opt: string) => {
+    if (opt.toLowerCase() === "proyectos") {
+      props.onSetActiveIndex(0);
+    } else {
+      props.onSetActiveIndex(index);
+    }
+  };
+
   return (
-    <NavbarBootstrap className={props.className} expand="lg">
+    <NavbarBootstrap
+      className={props.className}
+      expand="lg"
+      style={{ position: "fixed", width: "100%", zIndex: 999 }}
+    >
       <Container className="container-navbar">
         <NavbarBootstrap.Brand href="#home">
           <svg
@@ -82,7 +96,15 @@ function Navbar(props: ClassName) {
               >
                 {navBarDropdownOptions.map((opt: string, i: number) => {
                   return (
-                    <NavDropdown.Item key={i} href={`#action-${i}`}>
+                    <NavDropdown.Item
+                      key={i}
+                      href={
+                        opt.toLowerCase() === "proyectos"
+                          ? "#carousel-menu"
+                          : `#action-${i}`
+                      }
+                      onClick={() => handleActiveIndex(i, opt)}
+                    >
                       {opt}
                     </NavDropdown.Item>
                   );
@@ -95,7 +117,12 @@ function Navbar(props: ClassName) {
                   className="btn-navbar"
                   key={i}
                   variant="outline-light"
-                  href={`#section-${i}`}
+                  href={`${
+                    opt.toLowerCase() === "servicios"
+                      ? "#carousel-menu"
+                      : "#section-" + i
+                  }`}
+                  onClick={() => handleActiveIndex(i, opt)}
                 >
                   <span className="btn-navbar-opt">{opt}</span>
                 </Button>
