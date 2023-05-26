@@ -7,6 +7,7 @@ import Carousel from "components/carousel";
 import MoreAboutUs from "components/MoreAboutUs";
 import MenuProjects from "components/MenuProjects";
 import { useState } from "react";
+import Contact from "components/Contact";
 
 function App() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -27,6 +28,7 @@ function App() {
           activeIndex={activeIndex}
           onSetActiveIndex={handleSetActiveIndex}
         />
+        <Contact />
       </main>
     </div>
   );
