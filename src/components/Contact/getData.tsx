@@ -9,6 +9,7 @@ export interface ContactInfo {
 export interface ContactProps {
   title: string;
   contactInfo: ContactInfo[];
+  schedule: ContactInfo;
 }
 
 export const getData = (data: ContactProps | undefined) => {

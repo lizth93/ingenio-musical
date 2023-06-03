@@ -23,7 +23,9 @@ function ContactForm(props: Props) {
           placeholder="COMPARTE TU MENSAJE"
         />
       </Form.Group>
-      <Button type="submit">Submit form</Button>
+      <Button className="menu-btn-options" variant="outline-light">
+        <span className="btn-contact-opt">Submit form</span>
+      </Button>
     </Form>
   );
 }

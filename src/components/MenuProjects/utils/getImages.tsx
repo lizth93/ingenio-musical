@@ -5,14 +5,17 @@ import { Data } from "../interfaces";
 export const getImages = (data: Data | undefined, buttonName: string) => {
   const optionsImage = data?.menuOptions.map((opt) => (
     <div className="menu" key={opt.fields.title}>
-      <ReactSVG src={opt.fields.file.url} className="menu-img" />
+      <ReactSVG
+        src={opt.fields.file.url}
+        className="menu-img menu-img-contact"
+      />
       <p className="menu-title">{opt.fields.title}</p>
       <Button
-        className="btn-navbar menu-btn-options"
+        className=" menu-btn-options menu-contact-btn"
         key={opt.fields.title}
         variant="outline-light"
       >
-        <span className="btn-navbar-opt">{buttonName}</span>
+        <span className="btn-contact-opt">{buttonName}</span>
       </Button>
     </div>
   ));
