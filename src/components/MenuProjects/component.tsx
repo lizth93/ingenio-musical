@@ -43,6 +43,13 @@ export default function MenuProjects(props: Props) {
   const imagesProjects = getImages(projects, buttonProjects);
   const imagesServices = getImages(services, buttonServices);
 
+  const numItems = document.querySelectorAll(
+    ".carousel-menu .carousel-item"
+  ).length;
+
+  const activatedIndex =
+    props.activeIndex >= numItems ? numItems - 1 : props.activeIndex;
+
   const handleActiveIndex = (index: number) => {
     props.onSetActiveIndex(index);
   };
@@ -53,7 +60,7 @@ export default function MenuProjects(props: Props) {
         fade
         className="carousel-menu"
         interval={null}
-        activeIndex={props.activeIndex}
+        activeIndex={activatedIndex}
         onSelect={handleActiveIndex}
       >
         <Carousel.Item>

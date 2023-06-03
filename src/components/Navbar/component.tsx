@@ -120,7 +120,7 @@ function Navbar(
                   href={`${
                     opt.toLowerCase() === "servicios"
                       ? "#carousel-menu"
-                      : "#section-" + i
+                      : `#section-${i}`
                   }`}
                   onClick={() => handleActiveIndex(i, opt)}
                 >
