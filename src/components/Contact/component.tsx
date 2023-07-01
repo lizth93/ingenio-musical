@@ -31,7 +31,7 @@ export default function Contact(props: Props) {
   const contactData = getData(contact);
 
   return (
-    <Container className={props.className}>
+    <Container className={props.className} id="section-2">
       <h2 className="contact-title">
         {firstLetter}
         <span style={{ color: "red" }}>{secondLetter}</span>
